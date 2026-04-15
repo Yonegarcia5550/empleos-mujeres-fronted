@@ -1,0 +1,166 @@
+<div class="home-container">
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Empleos seguros para mujeres 💜</h1>
+      <p>Encuentra oportunidades cerca de ti</p>
+    </div>
+  </header>
+
+  <div class="contenedor">
+  <p class="mensaje-exito" *ngIf="mensajeExito">
+    {{ mensajeExito }}
+  </p>
+
+  <button class="btn-cerrar" (click)="logout()">Cerrar sesión</button>
+  <button class="btn-secundario" routerLink="/mis-postulaciones">
+  Ver mis postulaciones 📄
+</button>
+
+    <section class="mapa">
+      <app-mapa-vacantes
+        [vacantes]="vacantesCercanasFiltradas"
+        (vacanteSeleccionada)="setVacanteActiva($event)"
+        (ubicacionUsuario)="setUserLocation($event)">
+      </app-mapa-vacantes>
+    </section>
+
+    <section class="vacantes">
+      <h2 class="titulo-seccion">Vacantes cerca de ti</h2>
+
+      <div class="search-box">
+        <div class="filtros">
+          <input
+            type="text"
+            placeholder="Buscar empleo, empresa o colonia"
+            [(ngModel)]="filtroTexto"
+          />
+
+          <select [(ngModel)]="filtroTipo">
+            <option value="todos">Todos</option>
+            <option value="tiempo completo">Tiempo completo</option>
+            <option value="medio tiempo">Medio tiempo</option>
+            <option value="remoto">Remoto</option>
+          </select>
+
+          <select [(ngModel)]="radioMetros">
+            <option [ngValue]="500">500 m</option>
+            <option [ngValue]="1000">1 km</option>
+            <option [ngValue]="2000">2 km</option>
+            <option [ngValue]="5000">5 km</option>
+          </select>
+
+          <button class="btn-buscar" (click)="buscar()">
+            Buscar 🔍
+          </button>
+        </div>
+      </div>
+
+      <p *ngIf="!cargando && vacantesCercanasFiltradas.length === 0">
+        No hay vacantes cercanas con esos filtros.
+      </p>
+
+      <div *ngFor="let v of vacantesCercanasFiltradas">
+        <div
+          class="vacante-card"
+          [class.activa]="vacanteActiva?._id === v._id"
+          [id]="'card-' + v._id"
+        >
+          <img
+            *ngIf="v.imagenLocal"
+            [src]="v.imagenLocal"
+            alt="Imagen del local"
+            class="vacante-img"
+          />
+
+          <h3>{{ v.titulo }}</h3>
+
+          <div class="vacante-info">
+            <p>🏢 {{ v.empresa?.nombre || 'Empresa no disponible' }}</p>
+            <p>📍 {{ v.colonia || v.ubicacion || 'Ubicación no disponible' }}</p>
+
+            <p *ngIf="v.distancia">
+              🚶 {{ (v.distancia / 1000) | number:'1.1-1' }} km
+            </p>
+          </div>
+
+          <div class="vacante-footer">
+            <p class="salario">
+              💰 ${{ v.salario | number }}
+              <span class="periodo">al mes</span>
+            </p>
+
+            <button type="button" class="btn-postular" (click)="postular(v._id)">
+              Postularme 💜
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<div class="modal-overlay" *ngIf="mostrarFormularioPostulacion">
+  <div class="modal-postulacion">
+    <h2>Formulario de postulación 💜</h2>
+
+    <p *ngIf="vacanteSeleccionada">
+      Vacante seleccionada:
+      <strong>{{ vacanteSeleccionada.titulo }}</strong>
+    </p>
+
+    <input
+  type="text"
+  placeholder="Nombre completo *"
+  [(ngModel)]="formularioPostulacion.nombre"
+/>
+
+<input
+  type="email"
+  placeholder="Correo electrónico *"
+  [(ngModel)]="formularioPostulacion.correo"
+/>
+
+<input
+  type="text"
+  placeholder="Teléfono *"
+  [(ngModel)]="formularioPostulacion.telefono"
+/>
+
+    <textarea
+      rows="3"
+      placeholder="Cuéntanos tu experiencia"
+      [(ngModel)]="formularioPostulacion.experiencia"
+    ></textarea>
+
+    <textarea
+      rows="4"
+      placeholder="Mensaje de presentación"
+      [(ngModel)]="formularioPostulacion.mensaje"
+    ></textarea>
+    <div *ngIf="!formularioPostulacion.nombre && intentoEnvio" class="error">
+        El nombre es obligatorio
+      </div>
+
+      <div *ngIf="!formularioPostulacion.correo && intentoEnvio" class="error">
+        El correo es obligatorio
+      </div>
+
+      <div *ngIf="!formularioPostulacion.telefono && intentoEnvio" class="error">
+        El teléfono es obligatorio
+      </div>
+    <div class="modal-botones">
+      <button type="button" class="btn-cancelar" (click)="cerrarFormulario()">
+        Cancelar
+      </button>
+
+      <button
+        type="button"
+        class="btn-enviar"
+        (click)="enviarPostulacion()"
+        [disabled]="enviandoPostulacion"
+      >
+        {{ enviandoPostulacion ? 'Enviando...' : 'Enviar postulación' }}
+      </button>
+    </div>
+  </div>
+</div>
+</div>

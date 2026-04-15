@@ -1,0 +1,49 @@
+<div class="register-container">
+  <div class="register-card">
+    <h1>Crear cuenta 💜</h1>
+    <p>Regístrate para guardar tus postulaciones y dar seguimiento</p>
+
+    <div *ngIf="error" class="error-box">
+      {{ error }}
+    </div>
+
+    <input
+      type="text"
+      placeholder="Nombre completo *"
+      [(ngModel)]="formulario.nombre"
+    />
+
+    <input
+      type="email"
+      placeholder="Correo electrónico *"
+      [(ngModel)]="formulario.correo"
+    />
+
+    <input
+      type="text"
+      placeholder="Teléfono"
+      [(ngModel)]="formulario.telefono"
+    />
+
+    <input
+      type="password"
+      placeholder="Contraseña *"
+      [(ngModel)]="formulario.password"
+    />
+
+    <input
+      type="password"
+      placeholder="Confirmar contraseña *"
+      [(ngModel)]="formulario.confirmPassword"
+    />
+
+    <button (click)="registrar()" [disabled]="cargando">
+      {{ cargando ? 'Creando cuenta...' : 'Registrarme' }}
+    </button>
+
+    <p class="link-text">
+      ¿Ya tienes cuenta?
+      <a routerLink="/login">Inicia sesión</a>
+    </p>
+  </div>
+</div>

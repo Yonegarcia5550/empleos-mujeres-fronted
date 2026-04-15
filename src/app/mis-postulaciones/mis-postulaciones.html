@@ -1,0 +1,45 @@
+<div class="mis-postulaciones-container">
+  <div class="header-gradient">
+    <h1>Mis postulaciones 💜</h1>
+    <p>Consulta el estado de tus solicitudes</p>
+  </div>
+
+  <div class="acciones">
+    <button class="btn-secundario" (click)="volver()">← Volver</button>
+    <button class="btn-cerrar" (click)="logout()">Cerrar sesión</button>
+  </div>
+
+  <div class="debug-box">
+    
+
+  <div *ngIf="cargando" class="mensaje-box">
+    Cargando postulaciones...
+  </div>
+
+  <div *ngIf="!cargando && error" class="mensaje-box error-box">
+    Ocurrió un error al cargar tus postulaciones.
+  </div>
+
+  <div *ngIf="!cargando && !error && postulaciones.length === 0" class="mensaje-box">
+    No tienes postulaciones todavía.
+  </div>
+
+  <div *ngIf="!cargando && !error && postulaciones.length > 0" class="lista-postulaciones">
+    <div *ngFor="let p of postulaciones" class="postulacion-card">
+      <div class="card-top">
+        <h3>{{ p.vacante?.titulo || 'Vacante sin título' }}</h3>
+        <span class="estado-badge" [ngClass]="getEstadoClase(p.estado)">
+          {{ p.estado || 'Sin estado' }}
+        </span>
+      </div>
+
+      <div class="card-info">
+        <p><strong>Nombre:</strong> {{ p.nombre || 'No especificado' }}</p>
+        <p><strong>Correo:</strong> {{ p.correo || 'No especificado' }}</p>
+        <p><strong>Teléfono:</strong> {{ p.telefono || 'No especificado' }}</p>
+        <p><strong>Experiencia:</strong> {{ p.experiencia || 'No especificada' }}</p>
+        <p><strong>Mensaje:</strong> {{ p.mensaje || 'Sin mensaje' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

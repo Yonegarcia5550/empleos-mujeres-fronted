@@ -1,0 +1,359 @@
+body {
+  background: linear-gradient(135deg, #FCE4EC, #F3E5F5);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #8e24aa, #d81b60);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1rem;
+  opacity: 0.95;
+  margin: 0;
+}
+
+/* CONTENEDOR GENERAL */
+.contenedor {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.vacantes {
+  width: 100%;
+}
+
+/* MAPA */
+.mapa {
+  margin: 20px auto 30px auto;
+  height: 50vh;
+  min-height: 280px;
+  max-height: 420px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* SECCIÓN DE FILTROS */
+.search-box {
+  background: white;
+  padding: 18px;
+  border-radius: 20px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  width: 100%;
+  margin: 20px auto 30px auto;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.filtros input,
+.filtros select {
+  padding: 14px 16px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #d8bfd8;
+  outline: none;
+  background: #fff;
+}
+
+.filtros input {
+  flex: 1;
+  min-width: 240px;
+}
+
+.filtros select {
+  min-width: 130px;
+}
+
+/* BOTÓN BUSCAR */
+.btn-buscar {
+  background: linear-gradient(45deg, #C2185B, #8E24AA);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 17px;
+  border-radius: 14px;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-buscar:hover {
+  transform: translateY(-2px);
+}
+
+/* TÍTULO SECCIÓN */
+.titulo-seccion {
+  font-size: 2rem;
+  color: #4A148C;
+  margin: 10px 0 20px 0;
+}
+
+/* TARJETAS */
+.vacante-card {
+  background: white;
+  border-radius: 20px;
+  padding: 22px;
+  margin: 18px auto;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.2s;
+  border: 1px solid #f3d9ea;
+}
+
+.vacante-card:hover {
+  transform: translateY(-4px);
+}
+
+.vacante-card h3 {
+  font-size: 24px;
+  color: #8E24AA;
+  margin: 0 0 12px 0;
+}
+
+.vacante-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #444;
+  margin-bottom: 14px;
+  font-size: 17px;
+}
+
+/* IMAGEN DEL LOCAL */
+.vacante-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
+/* SALARIO */
+.salario {
+  background: #FCE4EC;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #C2185B;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.periodo {
+  font-size: 16px;
+  font-weight: normal;
+  color: #555;
+}
+
+/* FOOTER CARD */
+.vacante-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+/* BOTÓN POSTULAR */
+.btn-postular {
+  background: linear-gradient(135deg, #C2185B, #8E24AA);
+  color: white;
+  padding: 14px 22px;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  min-width: 170px;
+  transition: 0.2s;
+}
+
+.btn-postular:hover {
+  transform: translateY(-2px);
+}
+
+.activa {
+  border: 2px solid #C2185B;
+  box-shadow: 0 10px 24px rgba(194, 24, 91, 0.18);
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-postulacion {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.modal-postulacion h2 {
+  margin-top: 0;
+  color: #8E24AA;
+}
+
+.modal-postulacion p {
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.modal-postulacion input,
+.modal-postulacion textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #d8bfd8;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.modal-botones {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.btn-cancelar {
+  background: #eeeeee;
+  color: #333;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-enviar {
+  background: linear-gradient(135deg, #C2185B, #8E24AA);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    padding: 1.8rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .mapa {
+    height: 42vh;
+    min-height: 250px;
+  }
+
+  .filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filtros input,
+  .filtros select,
+  .btn-buscar {
+    width: 100%;
+  }
+
+  .vacante-card {
+    padding: 18px;
+  }
+
+  .vacante-card h3 {
+    font-size: 20px;
+  }
+
+  .vacante-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-postular {
+    width: 100%;
+  }
+
+  .titulo-seccion {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-postulacion {
+    padding: 18px;
+  }
+
+  .modal-botones {
+    flex-direction: column;
+  }
+
+  .btn-cancelar,
+  .btn-enviar {
+    width: 100%;
+  }
+}
+.mensaje-exito {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin: 12px 0 20px 0;
+  font-weight: 600;
+}
+.error {
+  color: #c0392b;
+  font-size: 13px;
+  margin-bottom: 10px;
+}

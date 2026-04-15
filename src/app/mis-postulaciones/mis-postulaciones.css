@@ -1,0 +1,180 @@
+body {
+  background: #f6f4f8;
+  font-family: Arial, sans-serif;
+}
+
+.mis-postulaciones-container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.header-gradient {
+  background: linear-gradient(90deg, #8e24aa, #d81b60);
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.header-gradient h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.header-gradient p {
+  margin-top: 10px;
+  font-size: 17px;
+  opacity: 0.95;
+}
+
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.btn-secundario,
+.btn-cerrar {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-secundario {
+  background: #ede7f6;
+  color: #5e35b1;
+}
+
+.btn-secundario:hover {
+  transform: translateY(-1px);
+  background: #e1d7f5;
+}
+
+.btn-cerrar {
+  background: #f8d7e3;
+  color: #c2185b;
+}
+
+.btn-cerrar:hover {
+  transform: translateY(-1px);
+  background: #f3c4d6;
+}
+
+.debug-box {
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #666;
+}
+
+.mensaje-box {
+  background: white;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.error-box {
+  color: #b00020;
+  background: #fdecef;
+}
+
+.lista-postulaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.postulacion-card {
+  background: white;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.postulacion-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.card-top h3 {
+  margin: 0;
+  color: #4a148c;
+  font-size: 24px;
+}
+
+.card-info p {
+  margin: 8px 0;
+  color: #333;
+  font-size: 15px;
+}
+
+.estado-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.estado-enviada {
+  background: #ede7f6;
+  color: #6a1b9a;
+}
+
+.estado-revisada {
+  background: #fff3cd;
+  color: #a06a00;
+}
+
+.estado-aceptada {
+  background: #d4edda;
+  color: #1b5e20;
+}
+
+.estado-rechazada {
+  background: #f8d7da;
+  color: #842029;
+}
+
+@media (max-width: 768px) {
+  .header-gradient h1 {
+    font-size: 30px;
+  }
+
+  .acciones {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .btn-secundario,
+  .btn-cerrar {
+    width: 100%;
+  }
+
+  .card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

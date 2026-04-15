@@ -1,0 +1,100 @@
+<div class="empresa-container">
+  <div class="empresa-header">
+    <div>
+      <h1>Panel de Empresa 💼</h1>
+      <p>Administra tus vacantes publicadas y encuentra talento para tu empresa.</p>
+    </div>
+
+    <button class="btn-cerrar" (click)="logout()">Cerrar sesión</button>
+  </div>
+
+  <div class="form-card">
+    <h2>{{ editando ? 'Editar vacante' : 'Crear nueva vacante' }}</h2>
+
+    <div class="form-grid">
+      <input type="text" placeholder="Título" [(ngModel)]="formulario.titulo" />
+      <input type="text" placeholder="Ubicación" [(ngModel)]="formulario.ubicacion" />
+
+      <textarea placeholder="Descripción" [(ngModel)]="formulario.descripcion"></textarea>
+
+      <input type="number" placeholder="Salario" [(ngModel)]="formulario.salario" />
+
+      <select [(ngModel)]="formulario.tipo">
+        <option value="tiempo completo">Tiempo completo</option>
+        <option value="medio tiempo">Medio tiempo</option>
+      </select>
+
+      <input type="number" placeholder="Latitud" [(ngModel)]="formulario.lat" />
+      <input type="number" placeholder="Longitud" [(ngModel)]="formulario.lng" />
+      <input type="text" placeholder="Teléfono" [(ngModel)]="formulario.telefono" />
+      <input
+        type="text"
+        placeholder="Dirección completa"
+        [(ngModel)]="formulario.direccionCompleta"
+        class="input-full"
+      />
+    </div>
+
+    <div class="botones-form">
+      <button class="btn-guardar" (click)="guardarVacante()">
+        {{ editando ? 'Actualizar vacante' : 'Crear vacante' }}
+      </button>
+
+      <button *ngIf="editando" class="btn-cancelar" (click)="cancelarEdicion()">
+        Cancelar
+      </button>
+    </div>
+  </div>
+
+  <div class="lista-vacantes">
+    <h2>Mis vacantes</h2>
+
+    <div class="vacante-card" *ngFor="let v of vacantes">
+      <div class="vacante-top">
+        <div>
+          <h3>{{ v.titulo }}</h3>
+          <p class="vacante-ubicacion">📍 {{ v.ubicacion }}</p>
+        </div>
+        <span class="badge-tipo">{{ v.tipo }}</span>
+      </div>
+
+      <p class="vacante-salario">💰 ${{ v.salario }}</p>
+
+      <div class="acciones">
+        <button class="btn-editar" (click)="editarVacante(v)">Editar</button>
+        <button class="btn-eliminar" (click)="eliminarVacante(v._id)">Eliminar</button>
+        <button class="btn-ver" (click)="verSolicitudes(v._id)">
+          {{ vacanteAbiertaSolicitudes === v._id ? 'Ocultar solicitudes' : 'Ver solicitudes' }}
+        </button>
+      </div>
+
+<div class="postulaciones-box" *ngIf="vacanteAbiertaSolicitudes === v._id">
+  <h4>Solicitudes recibidas</h4>
+
+  <p *ngIf="cargandoSolicitudes[v._id]">Cargando solicitudes...</p>
+
+  <div *ngIf="!cargandoSolicitudes[v._id]">
+    <div *ngIf="postulacionesPorVacante[v._id]?.length; else sinSolicitudes">
+      <div class="postulacion-card" *ngFor="let p of postulacionesPorVacante[v._id]">
+        <p><strong>Nombre:</strong> {{ p.nombre }}</p>
+        <p><strong>Correo:</strong> {{ p.correo }}</p>
+        <p><strong>Teléfono:</strong> {{ p.telefono }}</p>
+        <p><strong>Experiencia:</strong> {{ p.experiencia || 'No especificada' }}</p>
+        <p><strong>Mensaje:</strong> {{ p.mensaje || 'Sin mensaje' }}</p>
+        <p><strong>Estado:</strong> {{ p.estado }}</p>
+
+        <div class="acciones-postulacion">
+          <button class="btn-revisada" (click)="cambiarEstado(p._id, 'revisada', v._id)">Revisada</button>
+          <button class="btn-aceptar" (click)="cambiarEstado(p._id, 'aceptada', v._id)">Aceptar</button>
+          <button class="btn-rechazar" (click)="cambiarEstado(p._id, 'rechazada', v._id)">Rechazar</button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #sinSolicitudes>
+      <p>Aún no hay solicitudes para esta vacante.</p>
+    </ng-template>
+  </div>
+</div>
+  </div>
+</div>

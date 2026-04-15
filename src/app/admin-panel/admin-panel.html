@@ -1,0 +1,43 @@
+<div class="admin-container">
+  <div class="admin-header">
+
+    <div>
+      <h1>Panel de Superusuario 🛡️</h1>
+      <p>Administra empresas y vacantes del sistema.</p>
+    </div>
+
+    <button class="btn-cerrar" (click)="logout()">Cerrar sesión</button>
+  </div>
+
+  <div class="bloque">
+    <h2>Empresas registradas</h2>
+
+    <div class="card" *ngFor="let e of empresas">
+      <h3>{{ e.nombre }}</h3>
+      <p><strong>Correo:</strong> {{ e.correo }}</p>
+      <p><strong>Teléfono:</strong> {{ e.telefono || 'No registrado' }}</p>
+      <p><strong>Estado:</strong> {{ e.estadoEmpresa }}</p>
+
+      <div class="acciones">
+        <button class="btn-aprobar" (click)="aprobarEmpresa(e._id)">Aprobar</button>
+        <button class="btn-rechazar" (click)="rechazarEmpresa(e._id)">Rechazar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <h2>Todas las vacantes</h2>
+
+    <div class="card" *ngFor="let v of vacantes">
+      <h3>{{ v.titulo }}</h3>
+      <p><strong>Empresa:</strong> {{ v.empresa?.nombre || 'Sin empresa' }}</p>
+      <p><strong>Ubicación:</strong> {{ v.ubicacion }}</p>
+      <p><strong>Salario:</strong> ${{ v.salario }}</p>
+      <p><strong>Tipo:</strong> {{ v.tipo }}</p>
+
+      <div class="acciones">
+        <button class="btn-eliminar" (click)="eliminarVacante(v._id)">Eliminar vacante</button>
+      </div>
+    </div>
+  </div>
+</div>

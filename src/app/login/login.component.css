@@ -1,0 +1,99 @@
+:host {
+  display: block;
+  height: 100vh;
+}
+
+/* Fondo tipo app */
+.login-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #fdf2f8, #ede9fe);
+}
+
+/* Tarjeta */
+.login-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  width: 350px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Título */
+.login-card h1 {
+  margin-bottom: 10px;
+  color: #7c3aed;
+}
+
+/* Subtexto */
+.subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.form-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: #475569;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.15);
+}
+
+/* Botón */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #ec4899, #7c3aed);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+
+.btn-login:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(124, 58, 237, 0.3);
+}
+
+/* Link */
+.link-text {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.link-text a {
+  color: #7c3aed;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.link-text a:hover {
+  text-decoration: underline;
+}
